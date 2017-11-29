@@ -9,6 +9,10 @@
         <members>Contact_Assignments__mdt.Assignment_Group__c</members>
         <name>CustomField</name>
     </types>
+	<types>
+		<members>*</members>
+		<name>CustomMetadata</name>
+	</types>
     <types>
         <members>Contact_Assignments__mdt</members>
         <name>CustomObject</name>
