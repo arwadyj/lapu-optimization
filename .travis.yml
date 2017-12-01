@@ -18,4 +18,4 @@ before_install:
 - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key
   --username $USERNAME --setdefaultdevhubusername -a HubOrg
 script:
-- sfdx force:mdapi:deploy --checkonly --deploydir ./mdapi --targetusername prod --testlevel RunLocalTests --wait 60
+- sfdx force:mdapi:deploy --checkonly --deploydir ./mdapi --targetusername HubOrg --testlevel RunLocalTests --wait 60
