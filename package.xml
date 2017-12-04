@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+        <members>Contact.LAPU_Standard_Contact_Duplicate_Rule</members>
+        <members>Lead.LAPU_Standard_Lead_Duplicate_Rule</members>
+        <name>DuplicateRule</name>
+    </types>
+	<types>
+        <members>Contact.LAPU_Standard_Contact_Matching_Rule</members>
+        <members>Lead.LAPU_Standard_Lead_Matching_Rule</members>
+        <name>MatchingRule</name>
+    </types>	
+	<version>41.0</version>
+</Package>
