@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cutoff_Days_Cannot_Exceed_500</fullName>
+    <active>true</active>
+    <description>Prevents the Cutoff Days field from having a value greater than 500</description>
+    <errorConditionFormula>Cutoff_Days__c > 500</errorConditionFormula>
+    <errorDisplayField>Cutoff_Days__c</errorDisplayField>
+    <errorMessage>Cutoff Days cannot exceed 500</errorMessage>
+</ValidationRule>

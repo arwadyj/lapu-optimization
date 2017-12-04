@@ -2,8 +2,9 @@ global class BatchTaskRemoval implements Database.Batchable<sObject> {
 
     global Database.QueryLocator start(Database.BatchableContext bc) {
         
-        Integer days = 120;
-        //Integer days = [SELECT Id FROM *__mdt ][0].Days__c;
+        Decimal decimalDays = [SELECT Cutoff_Days__c FROM Task_Removal_Setting__mdt][0].Cutoff_Days__c;
+        
+        Integer days = Integer.valueOf(decimalDays);
         
         Date cutoffDateUnformatted = System.today().addDays(-days);
         
