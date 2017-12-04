@@ -22,8 +22,8 @@
   </types>
   <types>
 	<name>MatchingRule</name>
-	<members>Contact</members>
-	<members>Lead</members>
+	<members>Contact.LAPU_Standard_Contact_Matching_Rule</members>
+	<members>Lead.LAPU_Standard_Lead_Matching_Rule</members>
   </types>
   <types>
     <name>CustomField</name>
