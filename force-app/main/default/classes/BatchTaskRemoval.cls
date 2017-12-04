@@ -5,12 +5,16 @@ global class BatchTaskRemoval implements Database.Batchable<sObject> {
         Integer days = 120;
         //Integer days = [SELECT Id FROM *__mdt ][0].Days__c;
         
-        return Database.getQueryLocator('SELECT Id FROM Task WHERE IsCompleted = True AND LastModifiedDate <= :' + System.today().addDays(-days));
+        Date cutoffDateUnformatted = System.today().addDays(-days);
+        
+        String cutOffDate = String.valueOf(cutoffDateUnformatted);
+        
+        return Database.getQueryLocator('SELECT Id FROM Task WHERE Status = \'Completed\' AND Completed_Date__c <= ' + cutoffDate);
     }
     
     global void execute(Database.BatchableContext bc, List<Task> scope) {
         
-        System.debug('WHAT IS SCOPE? - ' + scope);
+        delete scope;
     }
     
     global void finish(Database.BatchableContext bc) {
