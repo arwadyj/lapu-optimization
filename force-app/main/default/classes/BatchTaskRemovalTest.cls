@@ -66,7 +66,7 @@ private class BatchTaskRemovalTest {
             	  FROM Task
             ];
         
-        System.assertEquals(3, taskList.size(), '### There should be three Tasks in taskList but there are only ' + taskList.size() + '; there is something wrong with the TestSetup method ###');
+        System.assertEquals(3, taskList.size(), '### There should be three Tasks in taskList but there are ' + taskList.size() + '; there is something wrong with the TestSetup method ###');
         
         System.debug('### taskList = ' + taskList + ' ###');
         
@@ -109,5 +109,49 @@ private class BatchTaskRemovalTest {
     @isTest
     static void batchApexTaskLogicBulk() {
         
+        //Create a unique, bulk set of Tasks
+        
+        //---Grab the existing Account
+        Account account = [SELECT Id FROM Account][0];
+        
+        //---Delete the existing Tasks from setup
+        List<Task> tasksToDelete = new List<Task>();
+        tasksToDelete = [SELECT Id FROM Task WHERE WhatId = :account.Id];
+        delete tasksToDelete;
+        
+        //--Create 200 Tasks that meet the deletion criteria
+        List<Task> tasksToInsert = new List<Task>();
+        for(Integer i=0; i<200; i++) {
+            
+            Task task = new Task();
+            
+            task.WhatId = account.Id;
+            task.Status = 'Completed';
+            
+            tasksToInsert.add(task);
+        }
+        insert tasksToInsert;
+        
+        //---Make the Tasks old; could not do this above because the "Set Completed Date on Task Completed" Task Workflow Rule fired
+        for(Task each :tasksToInsert)
+            each.Completed_Date__c = System.today().addDays(-500);
+        
+        update tasksToInsert;
+        
+        //Initiate the Batch Apex Operation
+        Test.startTest();
+        
+        BatchTaskRemoval batchTaskRemoval = new BatchTaskRemoval();
+        
+        Database.executeBatch(batchTaskRemoval);
+        
+        Test.stopTest();
+        
+        //Query the database for changes
+        List<Task> remainingTasks = new List<Task>();
+        remainingTasks = [SELECT Id FROM Task];
+        
+        //Assert that there are no remaining tasks
+        System.assertEquals(0, remainingTasks.size(), '### There should be no remaining tasks after the batch operation; instead there are ' + remainingTasks.size());
     }
 }
