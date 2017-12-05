@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>When assigned, this User will be assigned as the Owner of Student records they create.  The Round Robin tool will not fire.</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Exclude_from_Round_Robin__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Event.Completed_Date__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Task.Completed_Date__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Exclude from Round Robin</label>
+    <license>Salesforce</license>
+</PermissionSet>
