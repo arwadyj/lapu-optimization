@@ -18,7 +18,7 @@
         <name>CustomField</name>
     </types>
     <types>
-        <members>Task_Removal_Setting.Task_Removal_Cutoff_Days</members>
+        <members>*</members>
         <name>CustomMetadata</name>
     </types>
     <types>
