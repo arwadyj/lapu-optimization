@@ -22,6 +22,7 @@
         <name>CustomMetadata</name>
     </types>
     <types>
+        <members>Contact_Assignments__mdt</members>
         <members>Task_Removal_Setting__mdt</members>
         <name>CustomObject</name>
     </types>
