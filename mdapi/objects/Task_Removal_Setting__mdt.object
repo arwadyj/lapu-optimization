@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Houses a setting for Tasks that determines the cutoff point for deleting old, completed Tasks via a Batch Apex operation.</description>
-    <label>Task Removal Setting</label>
-    <pluralLabel>Task Removal Settings</pluralLabel>
-    <visibility>Public</visibility>
     <fields>
         <fullName>Cutoff_Days__c</fullName>
         <description>The number of days before today that identifies the cutoff point for Batch Apex Task Removal.  (Example: A value of 120 means that completed Tasks that are 120 days old will be deleted on the next Batch Apex Task Removal operation)</description>
@@ -17,12 +14,15 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
+    <label>Task Removal Setting</label>
+    <pluralLabel>Task Removal Settings</pluralLabel>
     <validationRules>
         <fullName>Cutoff_Days_Cannot_Exceed_500</fullName>
         <active>true</active>
         <description>Prevents the Cutoff Days field from having a value greater than 500</description>
-        <errorConditionFormula>Cutoff_Days__c > 500</errorConditionFormula>
+        <errorConditionFormula>Cutoff_Days__c &gt; 500</errorConditionFormula>
         <errorDisplayField>Cutoff_Days__c</errorDisplayField>
         <errorMessage>Cutoff Days cannot exceed 500</errorMessage>
     </validationRules>
+    <visibility>Public</visibility>
 </CustomObject>
