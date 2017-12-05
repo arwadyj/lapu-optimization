@@ -10,7 +10,7 @@ global class BatchTaskRemoval implements Database.Batchable<sObject> {
         
         String cutOffDate = String.valueOf(cutoffDateUnformatted);
         
-        return Database.getQueryLocator('SELECT Id FROM Task WHERE Status = \'Completed\' AND Completed_Date__c <= ' + cutoffDate);
+        return Database.getQueryLocator('SELECT Id FROM Task WHERE IsClosed = true AND Completed_Date__c <= ' + cutoffDate);
     }
     
     global void execute(Database.BatchableContext bc, List<Task> scope) {
