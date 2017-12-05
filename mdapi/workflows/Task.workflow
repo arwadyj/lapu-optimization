@@ -18,11 +18,11 @@
         </actions>
         <active>true</active>
         <criteriaItems>
-            <field>Task.Status</field>
+            <field>Task.IsClosed</field>
             <operation>equals</operation>
-            <value>Completed</value>
+            <value>True</value>
         </criteriaItems>
-        <description>Update the Completed Date field with the current date when a Task is marked "Completed."</description>
+        <description>Update the Completed Date field with the current date when a Task is closed.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

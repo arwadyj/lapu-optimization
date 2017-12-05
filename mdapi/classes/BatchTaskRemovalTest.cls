@@ -15,9 +15,10 @@ private class BatchTaskRemovalTest {
         Task oldComplete = new Task();
         
         oldComplete.WhatId = account.Id;
-        oldComplete.Status = 'Completed';
+        oldComplete.Status = 'Spoke to Student';
         
         insert oldComplete;
+        System.debug('IS IT CLOSED? - ' + oldComplete.IsClosed);
         
         //---Make the Task have an old Completed Date
         oldComplete.Completed_Date__c = System.today().addDays(-500);
@@ -32,7 +33,7 @@ private class BatchTaskRemovalTest {
         Task newComplete = new Task();
         
         newComplete.WhatId = account.Id;
-        newComplete.Status = 'Completed';
+        newComplete.Status = 'Spoke to Student';
         
         insert newComplete;
         
@@ -62,7 +63,7 @@ private class BatchTaskRemovalTest {
         
         List<Task> taskList = 
             [ 
-            	SELECT Completed_Date__c, Status 
+            	SELECT Completed_Date__c, Status, IsClosed
             	  FROM Task
             ];
         
@@ -80,7 +81,7 @@ private class BatchTaskRemovalTest {
         
         taskList = 
             [ 
-            	SELECT Completed_Date__c, Status 
+            	SELECT Completed_Date__c, IsClosed 
             	  FROM Task
             ];
         
@@ -90,7 +91,7 @@ private class BatchTaskRemovalTest {
         
         for(Task each : taskList) {
             
-            if(each.Status == 'Completed') {
+            if(each.IsClosed) {
                 
                 System.assertNotEquals(System.today().addDays(-500), each.Completed_Date__c, 
                                        '### The Batch Apex logic failed to remove the old, completed Task ###');
@@ -99,7 +100,7 @@ private class BatchTaskRemovalTest {
                                     '### There should not be a completed Task with a Completed Date of today or a date in the past; Just found one with Completed Date: ' + each.Completed_Date__c + ' ###');
             }
             
-            if(each.Status != 'Completed')
+            if(each.IsClosed == false)
                 incompleteCounter ++;
         }
         
@@ -126,7 +127,7 @@ private class BatchTaskRemovalTest {
             Task task = new Task();
             
             task.WhatId = account.Id;
-            task.Status = 'Completed';
+            task.Status = 'Spoke to Student';
             
             tasksToInsert.add(task);
         }
