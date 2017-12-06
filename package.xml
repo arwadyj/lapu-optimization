@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF=8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<name>DuplicateRule</name>
+		<members>Contact.LAPU_Standard_Contact_Duplicate_Rule</members>
+        <members>Lead.LAPU_Standard_Lead_Duplicate_Rule</members>
+	</types>
+	<types>
+		<name>MatchingRule</name>
+		<members>Contact.LAPU_Standard_Contact_Matching_Rule</members>
+        <members>Lead.LAPU_Standard_Lead_Matching_Rule</members>
+	</types>
+	<types>
+		<name>Report</name>
+		<members>Duplicate_Reports</members>
+        <members>Duplicate_Reports/Contacts_with_Duplicates</members>
+        <members>Duplicate_Reports/Leads_with_Duplicates</members>
+	</types>
+	<types>
+		<name>ReportType</name>
+		<members>Contacts_with_Duplicates</members>
+        <members>Leads_with_Duplicates</members>
+	</types>
+	<version>41.0</version>
+</Package>
