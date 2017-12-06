@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<name>CustomField</name>
+		<members>Contact.Assignment_Group__c</members>
+        <members>Contact_Assignments__mdt.Assignee_Name__c</members>
+        <members>Contact_Assignments__mdt.Assignee_Number__c</members>
+        <members>Contact_Assignments__mdt.Assignee_User_Id__c</members>
+        <members>Contact_Assignments__mdt.Assignment_Group__c</members>
+		<members>Contact.Exclude_from_Round_Robin__c</members>
+	</types>
+	<types>
+		<name>CustomMetadata</name>
+		<members>*</members>
+	</types>
+	<types>
+        <members>Contact_Assignments__mdt</members>
+        <name>CustomObject</name>
+    </types>
+	<types>
+        <members>Contact_Assignments-7</members>
+        <members>Contact_Owner_Assignment-2</members>
+		<members>SUBFLOW_Check_for_Permission_Set_Assignment-3</members>
+        <name>Flow</name>
+    </types>
+	<types>
+        <members>Contact_Assignments__mdt-Contact Assignment Layout</members>
+        <name>Layout</name>
+    </types>
+	<types>
+        <members>Exclude_from_Round_Robin</members>
+        <name>PermissionSet</name>
+    </types>
+	<version>41.0</version>
+</Package>
