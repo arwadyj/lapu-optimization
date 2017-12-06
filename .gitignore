@@ -1,0 +1,3 @@
+#List items here that will be ignored by git
+.project
+.sfdx
