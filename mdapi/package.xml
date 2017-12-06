@@ -22,11 +22,13 @@
         <name>ReportType</name>
 	</types>
 	<types>
+        <members>Activity.Completed_Date__c</members>
         <members>Contact.Assignment_Group__c</members>
         <members>Contact_Assignments__mdt.Assignee_Name__c</members>
         <members>Contact_Assignments__mdt.Assignee_Number__c</members>
         <members>Contact_Assignments__mdt.Assignee_User_Id__c</members>
         <members>Contact_Assignments__mdt.Assignment_Group__c</members>
+        <members>Task_Removal_Setting__mdt.Cutoff_Days__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -47,10 +49,12 @@
         <members>Contact_Assignments.A7_Justin_Baker</members>
         <members>Contact_Assignments.A8_Kelsie_Spoelstra</members>
         <members>Contact_Assignments.A9_Kevin_Aquino</members>
+        <members>Task_Removal_Setting.Task_Removal_Cutoff_Days</members>
         <name>CustomMetadata</name>
     </types>
     <types>
         <members>Contact_Assignments__mdt</members>
+        <members>Task_Removal_Setting__mdt</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -60,7 +64,27 @@
     </types>
     <types>
         <members>Contact_Assignments__mdt-Contact Assignment Layout</members>
+        <members>Task_Removal_Setting__mdt-Task Removal Setting Layout</members>
         <name>Layout</name>
+    </types>
+	<types>
+        <members>BatchTaskRemoval</members>
+        <members>BatchTaskRemovalTest</members>
+        <members>ScheduledBatchTaskRemoval</members>
+        <members>ScheduledBatchTaskRemovalTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Task_Removal_Setting__mdt.Cutoff_Days_Cannot_Exceed_500</members>
+        <name>ValidationRule</name>
+    </types>
+    <types>
+        <members>Task.Set_Completed_Date_to_Current_Date</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+    <types>
+        <members>Task.Set Completed Date on Task Completed</members>
+        <name>WorkflowRule</name>
     </types>
     <version>41.0</version>
 </Package>

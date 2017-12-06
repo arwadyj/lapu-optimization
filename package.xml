@@ -62,5 +62,41 @@
         <name>Layout</name>
         <members>Contact_Assignments__mdt-Contact Assignment Layout</members>
     </types>
+	<types>
+		<name>ApexClass</name>
+		<members>BatchTaskRemoval</members>
+		<members>BatchTaskRemovalTest</members>
+		<members>ScheduledBatchTaskRemoval</members>
+		<members>ScheduledBatchTaskRemovalTest</members>
+	</types>
+	<types>
+		<name>CustomField</name>
+		<members>Activity.Completed_Date__c</members>
+		<members>Task_Removal_Setting__mdt.Cutoff_Days__c</members>
+	</types>
+	<types>
+		<name>CustomMetadata</name>
+		<members>Task_Removal_Setting.Task_Removal_Cutoff_Days</members>
+	</types>
+	<types>
+		<name>CustomObject</name>
+		<members>Task_Removal_Setting__mdt</members>
+	</types>
+	<types>
+		<name>Layout</name>
+		<members>Task_Removal_Setting__mdt-Task Removal Setting Layout</members>
+	</types>
+	<types>
+		<name>ValidationRule</name>
+		<members>Task_Removal_Setting__mdt.Cutoff_Days_Cannot_Exceed_500</members>
+	</types>
+	<types>
+		<name>WorkflowFieldUpdate</name>
+		<members>Task.Set_Completed_Date_to_Current_Date</members>
+	</types>
+	<types>
+		<name>WorkflowRule</name>
+		<members>Task.Set Completed Date on Task Completed</members>
+	</types>
 	<version>41.0</version>
 </Package>
