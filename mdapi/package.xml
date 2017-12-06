@@ -46,5 +46,12 @@
         <members>Leads_with_Duplicates</members>
         <name>ReportType</name>
 	</types>
+	<types>
+        <members>BatchDuplicateRecordSetRemoval</members>
+        <members>BatchDuplicateRecordSetRemovalTest</members>
+        <members>ScheduledBatchDupRecordSetRemoval</members>
+        <members>ScheduledBatchDupRecordSetRemovalTest</members>
+        <name>ApexClass</name>
+    </types>
     <version>41.0</version>
 </Package>
