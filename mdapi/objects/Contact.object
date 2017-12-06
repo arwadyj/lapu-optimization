@@ -30,14 +30,4 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <fields>
-        <fullName>Exclude_from_Round_Robin__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>When checked, this record will be excluded from consideration in the Round Robin tool.</description>
-        <externalId>false</externalId>
-        <label>Exclude from Round Robin</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
 </CustomObject>

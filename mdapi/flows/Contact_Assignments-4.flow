@@ -3,8 +3,8 @@
     <assignments>
         <name>Add_One_to_Assignee_Number</name>
         <label>Add One to Assignee Number</label>
-        <locationX>522</locationX>
-        <locationY>343</locationY>
+        <locationX>482</locationX>
+        <locationY>75</locationY>
         <assignmentItems>
             <assignToReference>assigneeNumber</assignToReference>
             <operator>Add</operator>
@@ -19,8 +19,8 @@
     <decisions>
         <name>If_Assignee_1_User_Id_is_Not_Null</name>
         <label>If Assignee 1 User Id is Not Null</label>
-        <locationX>1072</locationX>
-        <locationY>674</locationY>
+        <locationX>1032</locationX>
+        <locationY>406</locationY>
         <defaultConnectorLabel>Do Nothing - BUT Default Owner Remains</defaultConnectorLabel>
         <rules>
             <name>Update_Contact_with_Assignee_1_User_Id_Decision</name>
@@ -41,8 +41,8 @@
     <decisions>
         <name>If_Latest_Created_Contact_Owner_Id_Is_Not_Null</name>
         <label>If Latest Created Contact Owner Id Is Not Null</label>
-        <locationX>140</locationX>
-        <locationY>456</locationY>
+        <locationX>100</locationX>
+        <locationY>188</locationY>
         <defaultConnector>
             <targetReference>Get_Assignee_1_User_Id</targetReference>
         </defaultConnector>
@@ -66,8 +66,8 @@
     <decisions>
         <name>If_New_Assignee_Id_is_Not_Null</name>
         <label>If New Assignee Id is Not Null</label>
-        <locationX>806</locationX>
-        <locationY>465</locationY>
+        <locationX>766</locationX>
+        <locationY>197</locationY>
         <defaultConnector>
             <targetReference>Get_Assignee_1_User_Id</targetReference>
         </defaultConnector>
@@ -88,36 +88,14 @@
             <label>Update Contact with New Assignee Id</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>Proceed_if_No_Permission_Set_Assignment</name>
-        <label>Proceed if No Permission Set Assignment</label>
-        <locationX>64</locationX>
-        <locationY>149</locationY>
-        <defaultConnectorLabel>Stop</defaultConnectorLabel>
-        <rules>
-            <name>No_Permission_Set_Assignment</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>hasPermissionSet</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_Latest_Created_Contact_in_Assignment_Group</targetReference>
-            </connector>
-            <label>No Permission Set Assignment</label>
-        </rules>
-    </decisions>
     <interviewLabel>Contact Assignments {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Contact Assignments</label>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
         <name>Get_Assignee_1_User_Id</name>
         <label>Get Assignee 1 User Id</label>
-        <locationX>965</locationX>
-        <locationY>582</locationY>
+        <locationX>925</locationX>
+        <locationY>314</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_Assignee_1_User_Id_is_Not_Null</targetReference>
@@ -145,8 +123,8 @@
     <recordLookups>
         <name>Get_Latest_Created_Contact_in_Assignment_Group</name>
         <label>Get Latest Created Contact in Assignment Group</label>
-        <locationX>103</locationX>
-        <locationY>302</locationY>
+        <locationX>26</locationX>
+        <locationY>23</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_Latest_Created_Contact_Owner_Id_Is_Not_Null</targetReference>
@@ -156,13 +134,6 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>assignmentGroup</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Exclude_from_Round_Robin__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <filters>
@@ -183,8 +154,8 @@
     <recordLookups>
         <name>Get_Latest_Created_Contact_Owner_Number</name>
         <label>Get Latest Created Contact Owner Number</label>
-        <locationX>370</locationX>
-        <locationY>316</locationY>
+        <locationX>330</locationX>
+        <locationY>48</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Add_One_to_Assignee_Number</targetReference>
@@ -205,8 +176,8 @@
     <recordLookups>
         <name>Get_New_Assignee_Id</name>
         <label>Get New Assignee Id</label>
-        <locationX>664</locationX>
-        <locationY>373</locationY>
+        <locationX>624</locationX>
+        <locationY>105</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_New_Assignee_Id_is_Not_Null</targetReference>
@@ -234,8 +205,8 @@
     <recordUpdates>
         <name>Update_Contact_with_New_Assignee_Id</name>
         <label>Update Contact with New Assignee Id</label>
-        <locationX>1039</locationX>
-        <locationY>343</locationY>
+        <locationX>999</locationX>
+        <locationY>75</locationY>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -254,8 +225,8 @@
     <recordUpdates>
         <name>Update_Contact_with_New_Assignee_Id_0</name>
         <label>Update Contact with New Assignee Id</label>
-        <locationX>1227</locationX>
-        <locationY>551</locationY>
+        <locationX>1187</locationX>
+        <locationY>283</locationY>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -271,27 +242,7 @@
         </inputAssignments>
         <object>Contact</object>
     </recordUpdates>
-    <startElementReference>Check_for_Permission_Set_Assignment</startElementReference>
-    <subflows>
-        <name>Check_for_Permission_Set_Assignment</name>
-        <label>Check for Permission Set Assignment</label>
-        <locationX>25</locationX>
-        <locationY>19</locationY>
-        <connector>
-            <targetReference>Proceed_if_No_Permission_Set_Assignment</targetReference>
-        </connector>
-        <flowName>SUBFLOW_Check_for_Permission_Set_Assignment</flowName>
-        <inputAssignments>
-            <name>varContactId</name>
-            <value>
-                <elementReference>contactId</elementReference>
-            </value>
-        </inputAssignments>
-        <outputAssignments>
-            <assignToReference>hasPermissionSet</assignToReference>
-            <name>varHasPermissionSet</name>
-        </outputAssignments>
-    </subflows>
+    <startElementReference>Get_Latest_Created_Contact_in_Assignment_Group</startElementReference>
     <variables>
         <name>assignee1Id</name>
         <dataType>String</dataType>
@@ -328,16 +279,6 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>hasPermissionSet</name>
-        <dataType>Boolean</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <booleanValue>false</booleanValue>
-        </value>
     </variables>
     <variables>
         <name>latestCreatedContactOwnerId</name>

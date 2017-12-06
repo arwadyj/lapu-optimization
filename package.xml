@@ -7,29 +7,39 @@
         <members>Contact_Assignments__mdt.Assignee_Number__c</members>
         <members>Contact_Assignments__mdt.Assignee_User_Id__c</members>
         <members>Contact_Assignments__mdt.Assignment_Group__c</members>
-		<members>Contact.Exclude_from_Round_Robin__c</members>
 	</types>
 	<types>
 		<name>CustomMetadata</name>
-		<members>*</members>
+		<members>Contact_Assignments.A10_Krystal_Flores</members>
+		<members>Contact_Assignments.A11_Madison_Montz</members>
+		<members>Contact_Assignments.A12_Madison_Steff</members>
+		<members>Contact_Assignments.A13_Mark_Sokol</members>
+		<members>Contact_Assignments.A14_Michael_Leyva</members>
+		<members>Contact_Assignments.A16_Precious_Jackson</members>
+		<members>Contact_Assignments.A17_Scherre_Sheffield</members>
+		<members>Contact_Assignments.A18_Tyler_Kluz</members>
+		<members>Contact_Assignments.A1_Ray_Soriano</members>
+		<members>Contact_Assignments.A2_Alexandra_Martin</members>
+		<members>Contact_Assignments.A3_Annette_Valencia</members>
+		<members>Contact_Assignments.A4_Britney_Taylor</members>
+		<members>Contact_Assignments.A5_Haily_Osterhaus</members>
+		<members>Contact_Assignments.A6_Halie_Lewis</members>
+		<members>Contact_Assignments.A7_Justin_Baker</members>
+		<members>Contact_Assignments.A8_Kelsie_Spoelstra</members>
+		<members>Contact_Assignments.A9_Kevin_Aquino</members>
 	</types>
 	<types>
-        <members>Contact_Assignments__mdt</members>
         <name>CustomObject</name>
+        <members>Contact_Assignments__mdt</members>
     </types>
 	<types>
-        <members>Contact_Assignments-7</members>
-        <members>Contact_Owner_Assignment-2</members>
-		<members>SUBFLOW_Check_for_Permission_Set_Assignment-3</members>
         <name>Flow</name>
+        <members>Contact_Assignments-4</members>
+        <members>Contact_Owner_Assignment-2</members>
     </types>
 	<types>
-        <members>Contact_Assignments__mdt-Contact Assignment Layout</members>
         <name>Layout</name>
-    </types>
-	<types>
-        <members>Exclude_from_Round_Robin</members>
-        <name>PermissionSet</name>
+        <members>Contact_Assignments__mdt-Contact Assignment Layout</members>
     </types>
 	<version>41.0</version>
 </Package>
