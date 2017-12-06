@@ -64,8 +64,12 @@
     </types>
 	<types>
 		<name>ApexClass</name>
+		<members>BatchDuplicateRecordSetRemoval</members>
+		<members>BatchDuplicateRecordSetRemovalTest</members>
 		<members>BatchTaskRemoval</members>
 		<members>BatchTaskRemovalTest</members>
+		<members>ScheduledBatchDupRecordSetRemoval</members>
+		<members>ScheduledBatchDupRecordSetRemovalTest</members>
 		<members>ScheduledBatchTaskRemoval</members>
 		<members>ScheduledBatchTaskRemovalTest</members>
 	</types>

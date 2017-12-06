@@ -68,8 +68,12 @@
         <name>Layout</name>
     </types>
 	<types>
+        <members>BatchDuplicateRecordSetRemoval</members>
+        <members>BatchDuplicateRecordSetRemovalTest</members>
         <members>BatchTaskRemoval</members>
         <members>BatchTaskRemovalTest</members>
+        <members>ScheduledBatchDupRecordSetRemoval</members>
+        <members>ScheduledBatchDupRecordSetRemovalTest</members>
         <members>ScheduledBatchTaskRemoval</members>
         <members>ScheduledBatchTaskRemovalTest</members>
         <name>ApexClass</name>
