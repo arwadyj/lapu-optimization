@@ -33,8 +33,14 @@
         <members>Contact_Assignments__mdt</members>
     </types>
 	<types>
+        <name>FlowDefinition</name>
+        <members>Contact_Assignments</members>
+        <members>Contact_Owner_Assignment</members>
+ 	 </types>
+	<types>
         <name>Flow</name>
         <members>Contact_Assignments-4</members>
+		<members>Contact_Assignments-5</members>
         <members>Contact_Owner_Assignment-2</members>
     </types>
 	<types>
