@@ -2,7 +2,7 @@ global class BatchDuplicateRecordSetRemoval implements Database.Batchable<sObjec
 
     global static Database.QueryLocator start(Database.BatchableContext bc) {
         
-        return Database.getQueryLocator('SELECT Id, (select id from DuplicateRecordItems) FROM DuplicateRecordSet');
+        return Database.getQueryLocator('SELECT Id, (select id from DuplicateRecordItems limit 2) FROM DuplicateRecordSet');
     }
     
     global static void execute(Database.BatchableContext bc, List<DuplicateRecordSet> scope) {
