@@ -3,8 +3,8 @@
     <assignments>
         <name>Add_One_to_Assignee_Number</name>
         <label>Add One to Assignee Number</label>
-        <locationX>482</locationX>
-        <locationY>75</locationY>
+        <locationX>953</locationX>
+        <locationY>461</locationY>
         <assignmentItems>
             <assignToReference>assigneeNumber</assignToReference>
             <operator>Add</operator>
@@ -19,8 +19,8 @@
     <decisions>
         <name>If_Assignee_1_User_Id_is_Not_Null</name>
         <label>If Assignee 1 User Id is Not Null</label>
-        <locationX>1032</locationX>
-        <locationY>406</locationY>
+        <locationX>1503</locationX>
+        <locationY>793</locationY>
         <defaultConnectorLabel>Do Nothing - BUT Default Owner Remains</defaultConnectorLabel>
         <rules>
             <name>Update_Contact_with_Assignee_1_User_Id_Decision</name>
@@ -41,8 +41,8 @@
     <decisions>
         <name>If_Latest_Created_Contact_Owner_Id_Is_Not_Null</name>
         <label>If Latest Created Contact Owner Id Is Not Null</label>
-        <locationX>100</locationX>
-        <locationY>188</locationY>
+        <locationX>571</locationX>
+        <locationY>574</locationY>
         <defaultConnector>
             <targetReference>Get_Assignee_1_User_Id</targetReference>
         </defaultConnector>
@@ -66,8 +66,8 @@
     <decisions>
         <name>If_New_Assignee_Id_is_Not_Null</name>
         <label>If New Assignee Id is Not Null</label>
-        <locationX>766</locationX>
-        <locationY>197</locationY>
+        <locationX>1237</locationX>
+        <locationY>583</locationY>
         <defaultConnector>
             <targetReference>Get_Assignee_1_User_Id</targetReference>
         </defaultConnector>
@@ -88,14 +88,102 @@
             <label>Update Contact with New Assignee Id</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Only_Iterate_if_Values_Present</name>
+        <label>Only Iterate if Values Present</label>
+        <locationX>202</locationX>
+        <locationY>141</locationY>
+        <defaultConnectorLabel>Stop</defaultConnectorLabel>
+        <rules>
+            <name>Values_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varContactAssignments</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Iterate_Through_Contact_Assignments</targetReference>
+            </connector>
+            <label>Values Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Stop_if_the_Owner_is_Already_in_the_Round_Robin_Tool</name>
+        <label>Stop if the Owner is Already in the Round Robin Tool</label>
+        <locationX>33</locationX>
+        <locationY>257</locationY>
+        <defaultConnector>
+            <targetReference>Iterate_Through_Contact_Assignments</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Stop</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varCurrentContactAssignmentUserId.Assignee_User_Id__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>formCurrentUserId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Exclude_Contact_Record_from_Round_Robin</targetReference>
+            </connector>
+            <label>Stop</label>
+        </rules>
+    </decisions>
+    <description>Prevents members of the Round Robin Tool from being assigned to someone else.</description>
+    <formulas>
+        <name>formCurrentUserId</name>
+        <dataType>String</dataType>
+        <expression>CASESAFEID({!$User.Id})</expression>
+    </formulas>
     <interviewLabel>Contact Assignments {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Contact Assignments</label>
+    <loops>
+        <name>Iterate_Through_Contact_Assignments</name>
+        <label>Iterate Through Contact Assignments</label>
+        <locationX>324</locationX>
+        <locationY>256</locationY>
+        <assignNextValueToReference>varCurrentContactAssignmentUserId</assignNextValueToReference>
+        <collectionReference>varContactAssignments</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Stop_if_the_Owner_is_Already_in_the_Round_Robin_Tool</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_Latest_Created_Contact_in_Assignment_Group</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_All_Contact_Assignments</name>
+        <label>Get All Contact Assignments</label>
+        <locationX>100</locationX>
+        <locationY>39</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Only_Iterate_if_Values_Present</targetReference>
+        </connector>
+        <filters>
+            <field>Assignee_User_Id__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Contact_Assignments__mdt</object>
+        <outputReference>varContactAssignments</outputReference>
+        <queriedFields>Assignee_User_Id__c</queriedFields>
+    </recordLookups>
     <recordLookups>
         <name>Get_Assignee_1_User_Id</name>
         <label>Get Assignee 1 User Id</label>
-        <locationX>925</locationX>
-        <locationY>314</locationY>
+        <locationX>1396</locationX>
+        <locationY>701</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_Assignee_1_User_Id_is_Not_Null</targetReference>
@@ -123,8 +211,8 @@
     <recordLookups>
         <name>Get_Latest_Created_Contact_in_Assignment_Group</name>
         <label>Get Latest Created Contact in Assignment Group</label>
-        <locationX>26</locationX>
-        <locationY>23</locationY>
+        <locationX>496</locationX>
+        <locationY>409</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_Latest_Created_Contact_Owner_Id_Is_Not_Null</targetReference>
@@ -134,6 +222,13 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>assignmentGroup</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Exclude_from_Round_Robin__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <filters>
@@ -154,8 +249,8 @@
     <recordLookups>
         <name>Get_Latest_Created_Contact_Owner_Number</name>
         <label>Get Latest Created Contact Owner Number</label>
-        <locationX>330</locationX>
-        <locationY>48</locationY>
+        <locationX>801</locationX>
+        <locationY>434</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Add_One_to_Assignee_Number</targetReference>
@@ -176,8 +271,8 @@
     <recordLookups>
         <name>Get_New_Assignee_Id</name>
         <label>Get New Assignee Id</label>
-        <locationX>624</locationX>
-        <locationY>105</locationY>
+        <locationX>1095</locationX>
+        <locationY>491</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_New_Assignee_Id_is_Not_Null</targetReference>
@@ -203,10 +298,30 @@
         </outputAssignments>
     </recordLookups>
     <recordUpdates>
+        <name>Exclude_Contact_Record_from_Round_Robin</name>
+        <label>Exclude Contact Record from Round Robin</label>
+        <locationX>33</locationX>
+        <locationY>390</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>contactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Exclude_from_Round_Robin__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Contact_with_New_Assignee_Id</name>
         <label>Update Contact with New Assignee Id</label>
-        <locationX>999</locationX>
-        <locationY>75</locationY>
+        <locationX>1470</locationX>
+        <locationY>461</locationY>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -225,8 +340,8 @@
     <recordUpdates>
         <name>Update_Contact_with_New_Assignee_Id_0</name>
         <label>Update Contact with New Assignee Id</label>
-        <locationX>1187</locationX>
-        <locationY>283</locationY>
+        <locationX>1658</locationX>
+        <locationY>670</locationY>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -242,7 +357,7 @@
         </inputAssignments>
         <object>Contact</object>
     </recordUpdates>
-    <startElementReference>Get_Latest_Created_Contact_in_Assignment_Group</startElementReference>
+    <startElementReference>Get_All_Contact_Assignments</startElementReference>
     <variables>
         <name>assignee1Id</name>
         <dataType>String</dataType>
@@ -293,5 +408,21 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varContactAssignments</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact_Assignments__mdt</objectType>
+    </variables>
+    <variables>
+        <name>varCurrentContactAssignmentUserId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact_Assignments__mdt</objectType>
     </variables>
 </Flow>

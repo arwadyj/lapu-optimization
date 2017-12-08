@@ -28,6 +28,7 @@
         <members>Contact_Assignments__mdt.Assignee_Number__c</members>
         <members>Contact_Assignments__mdt.Assignee_User_Id__c</members>
         <members>Contact_Assignments__mdt.Assignment_Group__c</members>
+		<members>Contact.Exclude_from_Round_Robin__c</members>
         <members>Task_Removal_Setting__mdt.Cutoff_Days__c</members>
         <name>CustomField</name>
     </types>
@@ -58,7 +59,12 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Contact_Assignments-4</members>
+        <name>FlowDefinition</name>
+        <members>Contact_Assignments</members>
+        <members>Contact_Owner_Assignment</members>
+    </types>
+    <types>
+        <members>Contact_Assignments-8</members>
         <members>Contact_Owner_Assignment-2</members>
         <name>Flow</name>
     </types>

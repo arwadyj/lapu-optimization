@@ -28,6 +28,7 @@
         <members>Contact_Assignments__mdt.Assignee_Number__c</members>
         <members>Contact_Assignments__mdt.Assignee_User_Id__c</members>
         <members>Contact_Assignments__mdt.Assignment_Group__c</members>
+		<members>Contact.Exclude_from_Round_Robin__c</members>
 	</types>
 	<types>
 		<name>CustomMetadata</name>
@@ -54,8 +55,13 @@
         <members>Contact_Assignments__mdt</members>
     </types>
 	<types>
+        <name>FlowDefinition</name>
+        <members>Contact_Assignments</members>
+        <members>Contact_Owner_Assignment</members>
+ 	 </types>
+	<types>
         <name>Flow</name>
-        <members>Contact_Assignments-4</members>
+		<members>Contact_Assignments-8</members>
         <members>Contact_Owner_Assignment-2</members>
     </types>
 	<types>
